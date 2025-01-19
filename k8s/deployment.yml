@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-demo
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: ci-cd-demo
+  template:
+    metadata:
+      labels:
+        app: ci-cd-demo
+    spec:
+      containers:
+      - name: ci-cd-container
+        image: <your-dockerhub-username>/ci_cd_demo:latest
+        ports:
+        - containerPort: 80
